@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>To-Do List</title>
+</head>
+
+<body>
+    <div id="new-list">
+        <h1 id="head">✅To-Do</h1>
+        <p id="list">My List</p>
+        <p id="add-new-list" onclick="add_New_List()">+ New List</p>
+        <div class="popup" id="popup">
+            <input type="text" id="input-list" placeholder="Enter list">
+            <button type="button" id="addbtn" onclick="addlist()">Add</button>
+        </div>
+        <ul id="add-list" class="added-element"></ul>
+    </div>
+    <div class="center-input">
+        <div class="date-wish">
+            <h1 id="date-content"></h1>
+            <div class="wish-question">
+                <h1 id="wish"></h1>
+                <h2 id="question-tag">What are we planning today.?</h2>
+            </div>
+        </div>
+        <input type="text" id="task-input" placeholder="Enter the task">
+        <button type="button" id="addtaskbtn" onclick="addNewTask()">Add</button>
+        <div id="task-list">
+            <ul id="task-added"></ul>
+        </div>
+    </div>
+    <div id="calendar" class="calendar">
+        <div class="container">
+            <div class="cald">
+                <header class="arrows-name">
+                    <pre class="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="m19.503 20.835l-16.51-7.363c-1.324-.59-1.324-2.354 0-2.944l16.51-7.363c1.495-.667 3.047.814 2.306 2.202l-3.152 5.904c-.245.459-.245 1 0 1.458l3.152 5.904c.74 1.388-.81 2.87-2.306 2.202" />
+                    </svg></pre>
+                    <div class="header-display">
+                        <p class="display"></p>
+                    </div>
+                    <pre class="right"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="m4.497 20.835l16.51-7.363c1.324-.59 1.324-2.354 0-2.944L4.497 3.164c-1.495-.667-3.047.814-2.306 2.202l3.152 5.904c.245.459.245 1 0 1.458l-3.152 5.904c-.74 1.388.81 2.87 2.306 2.202" />
+                    </svg></pre>
+                </header>
+                <div class="week">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days"></div>
+            </div>
+            <div class="display-selected">
+                <p class="selected"></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
