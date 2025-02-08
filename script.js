@@ -42,7 +42,7 @@ function displayCalendar() {
         div.innerHTML += i;
 
         days.appendChild(div);
-        if (presentDate.getFullYear() === new Date().getFullYear && presentDate.getMonth() === new Date().getMonth() && presentDate.getDate() === new Date().getDate()) {
+        if (presentDate.getFullYear() === new Date().getFullYear() && presentDate.getMonth() === new Date().getMonth() && presentDate.getDate() === new Date().getDate()) {
             div.classList.add("current-date");
         }
     }
@@ -111,6 +111,9 @@ function addlist() {
     }
 }
 
+let lists = {};
+let currentList = null;
+
 function updateTodoList() {
     todoList.textContent = "";
 
@@ -135,6 +138,11 @@ function updateTodoList() {
         task.appendChild(newtaskdiv);
         newtaskdiv.classList.add("newelementdiv");
         todoList.appendChild(task);
+
+        newtaskdiv.addEventListener('click', function () {
+            currentList = inputArray[this.dataset.index];
+            displayTaskForList();
+        });
     }
 }
 
@@ -155,6 +163,16 @@ function closePopUp() {
 }
 
 document.getElementById("addbtn").addEventListener("click", closePopUp);
+
+function displayTaskForList() {
+    if (currentList) {
+        const listTasks = lists[currentList] || [];
+        addTodoElement(listTasks);
+    }
+    else {
+        addTodoElement([]);
+    }
+}
 
 //Wish Code
 
@@ -196,17 +214,19 @@ function addNewTask() {
     }
 
     if (inputElement.trim() !== "") {
-        todoArray.push(inputElement);
-        addTodoElement();
-        localStorage.setItem("todoelement", JSON.stringify(todoArray));
+        lists[currentList] = lists[currentList] || [];
+        lists[currentList].push(inputElement);
+
+        displayTaskForList();
+        localStorage.setItem("lists", JSON.stringify(lists));
         document.getElementById("task-input").value = "";
     }
 }
 
-function addTodoElement() {
+function addTodoElement(tasksToDisplay) {
     todoElement.textContent = "";
 
-    for (let i = 0; i < todoArray.length; i++) {
+    for (let i = 0; i < tasksToDisplay.length; i++) {
         let taskelement = document.createElement("li");
         let elementdiv = document.createElement("div");
         taskelement.appendChild(elementdiv);
@@ -226,7 +246,7 @@ function addTodoElement() {
         });
 
         let spanText = document.createElement("span");
-        spanText.textContent = todoArray[i];
+        spanText.textContent = tasksToDisplay[i];
         elementdiv.appendChild(spanText);
 
         let deletebtn = document.createElement("img");
@@ -246,9 +266,11 @@ function addTodoElement() {
     }
 }
 
-let storedElement = JSON.parse(localStorage.getItem("todoelement"));
+let storedLists = JSON.parse(localStorage.getItem("lists")) || {};
+lists = storedLists;
 
-if (storedElement) {
-    todoArray = storedElement;
-    addTodoElement();
+const storedCurrentList = localStorage.getItem("currentList");
+if (storedCurrentList) {
+    currentList = storedCurrentList;
+    displayTaskForList();
 }

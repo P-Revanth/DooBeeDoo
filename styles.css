@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+#head {
+    font-size: 40px;
+}
+
 body {
     background-color: black;
     min-height: 100vh;
@@ -24,7 +28,13 @@ body {
 }
 
 #add-new-list {
+    font-size: 20px;
+    font-weight: 300;
     cursor: pointer;
+}
+
+#add-new-list:hover {
+    color: black;
 }
 
 #head {
@@ -34,13 +44,13 @@ body {
 #list {
     padding-top: 10px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .popup {
     width: 300px;
     height: 200px;
-    background: #EDC001;
+    background: wheat;
     border-radius: 6px;
     position: absolute;
     top: 20%;
@@ -88,7 +98,8 @@ body {
 .newelementdiv {
     position: relative;
     align-items: center;
-    background-color: #EDC001;
+    color: black;
+    background-color: wheat;
     border: 2px solid white;
     font-size: 25px;
     font-weight: 400;
@@ -98,6 +109,11 @@ body {
     padding-left: 10px;
     padding-top: 8px;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+div.newelementdiv:hover {
+    background-color: aqua;
 }
 
 .cross-button {
@@ -196,8 +212,13 @@ pre {
     opacity: 0.5;
 }
 
+.selected-date {
+    background-color: black;
+    color: wheat;
+}
+
 .current-date {
-    background-color: white;
+    background-color: black;
     color: wheat;
 }
 
@@ -228,6 +249,8 @@ pre {
 }
 
 #addtaskbtn {
+    font-size: 20px;
+    font-weight: 600;
     border: 2px solid black;
     border-radius: 30px;
     width: 80px;
@@ -246,8 +269,9 @@ pre {
     position: relative;
     font-size: 30px;
     display: flex;
+    top: 30%;
     gap: 30px;
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 #wish {
@@ -258,11 +282,11 @@ pre {
     list-style-type: none;
 }
 
-#task-added {
+/* #task-added {
     background-color: blue;
     overflow-y: scroll;
     height: 100%;
-}
+} */
 
 .newtaskelemendiv {
     position: relative;
